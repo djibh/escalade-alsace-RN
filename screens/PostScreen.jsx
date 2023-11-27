@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Image, View } from "react-native";
+import { StyleSheet, Text, Image, View, ScrollView } from "react-native";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 import Badge from "../components/Badge";
@@ -14,17 +14,19 @@ export default function PostScreen({ route, navigation }) {
           style={styles.bgPicture}
           blurRadius={30}
         />
-        <Search />
-        <View style={styles.contentWrapper}>
-          <Text style={styles.title}>{title}</Text>
-          <Image source={{ uri: picture }} style={styles.picture} />
-          <Text style={styles.content}>{content}</Text>
-          <View style={styles.tags}>
-            {tags.map((item) => (
-              <Badge key={item} label={item} />
-            ))}
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Search />
+          <View style={styles.contentWrapper}>
+            <Text style={styles.title}>{title}</Text>
+            <Image source={{ uri: picture }} style={styles.picture} />
+            <Text style={styles.content}>{content}</Text>
+            <View style={styles.tags}>
+              {tags.map((item) => (
+                <Badge key={item} label={item} />
+              ))}
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </>
   );
