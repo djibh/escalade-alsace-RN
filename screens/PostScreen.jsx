@@ -1,5 +1,4 @@
-import { StyleSheet, Button, Text, Image, View } from "react-native";
-import Header from "../components/header/Header";
+import { StyleSheet, Text, Image, View } from "react-native";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 
@@ -14,10 +13,6 @@ export default function PostScreen({ route, navigation }) {
         <Search />
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.content}>{content}</Text>
-        {/* <Button
-          title="Go back to first screen in stack"
-          onPress={() => navigation.popToTop()}
-        /> */}
       </View>
     </>
   );
@@ -41,14 +36,20 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: COLORS.fontPrimary,
+    textShadowColor: "#333",
+    textShadowOffset: { height: 1, width: 0 },
+    textShadowRadius: 2,
   },
   content: {
-    fontSize: 14,
+    fontSize: 16,
+    textShadowColor: "#333",
+    textShadowOffset: { height: 1, width: 0 },
+    textShadowRadius: 2,
     fontWeight: "500",
-    color: "white",
+    color: COLORS.fontPrimary,
     lineHeight: 20,
   },
 });
