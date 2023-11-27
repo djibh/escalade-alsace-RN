@@ -10,11 +10,11 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (<>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home" >
         <Stack.Screen name="Home" component={HomeScreen} options={{
           header: () => null
         }}/>
-        <Stack.Screen name="Post" component={PostScreen} />
+        <Stack.Screen name="Post" component={PostScreen} options={({ route }) => ({ title: route.params.title })}/>
       </Stack.Navigator>
     </NavigationContainer>
   </>

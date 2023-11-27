@@ -31,7 +31,6 @@ export default function Header() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: COLORS.fontPrimary,
     alignItems: "center",
     justifyContent: "center",
   },

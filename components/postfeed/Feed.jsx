@@ -11,7 +11,17 @@ export default function Feed({ navigation }) {
       style={styles.latestPosts}
       data={posts}
       renderItem={({ item }) => (
-        <Post post={item} onPress={() => navigation.navigate("Post")} />
+        <Post
+          post={item}
+          onPress={() =>
+            navigation.navigate("Post", {
+              itemId: item.id,
+              title: item.title,
+              picture: item.picture,
+              content: item.body,
+            })
+          }
+        />
       )}
       keyExtractor={(item) => item.id}
     />
@@ -20,7 +30,6 @@ export default function Feed({ navigation }) {
 
 const styles = StyleSheet.create({
   latestPosts: {
-    backgroundColor: COLORS.fontPrimary,
     paddingHorizontal: 16,
   },
 });

@@ -3,10 +3,12 @@ import React from "react";
 import { COLORS } from "../../constants/theme";
 
 export default function Post({ post, onPress }) {
+  const { title, picture } = post;
+
   return (
     <TouchableOpacity style={styles.post} onPress={onPress}>
-      <Image source={{ uri: `${post.picture}` }} style={styles.picture} />
-      <Text style={styles.title}>{post.title}</Text>
+      <Image source={{ uri: picture }} style={styles.picture} />
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 }
