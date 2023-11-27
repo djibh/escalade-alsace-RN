@@ -4,17 +4,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import PostScreen from './screens/PostScreen';
+import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  StatusBar.setHidden(true)
   return (<>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" >
         <Stack.Screen name="Home" component={HomeScreen} options={{
-          header: () => null
+          header: () => null,
+          
         }}/>
-        <Stack.Screen name="Post" component={PostScreen} options={({ route }) => ({ title: route.params.title })}/>
+        <Stack.Screen name="Post" component={PostScreen} options={{
+          headerTintColor: "#e5e5e5",
+          headerTransparent: true,
+          headerTitle: ""
+        }}/>
       </Stack.Navigator>
     </NavigationContainer>
   </>

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, Image, View, ScrollView } from "react-native";
-import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 import Badge from "../components/Badge";
+import comments from "../assets/comments.png";
 
 export default function PostScreen({ route, navigation }) {
-  const { id, title, content, picture, tags } = route.params;
+  const { title, content, picture, tags, reactions } = route.params;
 
   return (
     <>
@@ -15,10 +15,11 @@ export default function PostScreen({ route, navigation }) {
           blurRadius={30}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Search />
+          {/* <Search /> */}
           <View style={styles.contentWrapper}>
             <Text style={styles.title}>{title}</Text>
             <Image source={{ uri: picture }} style={styles.picture} />
+            <Image source={comments} />
             <Text style={styles.content}>{content}</Text>
             <View style={styles.tags}>
               {tags.map((item) => (
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.primary,
-    alignItems: "justify",
     justifyContent: "flex-start",
     padding: 16,
     gap: 16,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   contentWrapper: {
     flexDirection: "column",
     height: "100%",
-    gap: 16,
+    gap: 24,
   },
   picture: {
     width: "100%",
@@ -61,16 +61,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   title: {
+    marginTop: 100,
     fontSize: 24,
     fontWeight: "bold",
     color: COLORS.fontPrimary,
     textShadowColor: "#333",
     textShadowOffset: { height: 1, width: 0 },
     textShadowRadius: 2,
+    textAlign: "center",
   },
   content: {
+    textAlign: "justify",
     fontSize: 16,
-    textShadowColor: "#333",
+    // textShadowColor: "#333",
     textShadowOffset: { height: 1, width: 0 },
     textShadowRadius: 2,
     fontWeight: "500",
