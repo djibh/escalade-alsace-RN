@@ -19,6 +19,7 @@ export default function Feed({ navigation }) {
               title: item.title,
               picture: item.picture,
               content: item.body,
+              tags: item.tags,
             })
           }
         />

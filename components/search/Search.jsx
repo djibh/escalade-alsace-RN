@@ -1,8 +1,6 @@
 import { StyleSheet, View, TextInput, Image } from "react-native";
 import search from "../../assets/search.png";
 
-import { COLORS } from "../../constants/theme";
-
 export default function Search() {
   return (
     <View style={styles.container}>
