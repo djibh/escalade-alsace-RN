@@ -3,7 +3,13 @@ import { COLORS } from "../constants/theme";
 import Badge from "../components/Badge";
 import comments from "../assets/comments.png";
 
-export default function PostScreen({ route, navigation }) {
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export default function PostScreen({ route }) {
   const { title, content, picture, tags, reactions } = route.params;
 
   return (
@@ -19,7 +25,12 @@ export default function PostScreen({ route, navigation }) {
           <View style={styles.contentWrapper}>
             <Text style={styles.title}>{title}</Text>
             <Image source={{ uri: picture }} style={styles.picture} />
-            <Image source={comments} />
+            <View style={styles.comments}>
+              <Image source={comments} />
+              <Text style={styles.commentNumber}>
+                {getRandomIntInclusive(10, 1000)}
+              </Text>
+            </View>
             <Text style={styles.content}>{content}</Text>
             <View style={styles.tags}>
               {tags.map((item) => (
@@ -70,10 +81,18 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
     textAlign: "center",
   },
+  comments: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  commentNumber: {
+    color: COLORS.fontPrimary,
+    fontWeight: "600",
+  },
   content: {
     textAlign: "justify",
     fontSize: 16,
-    // textShadowColor: "#333",
     textShadowOffset: { height: 1, width: 0 },
     textShadowRadius: 2,
     fontWeight: "500",
