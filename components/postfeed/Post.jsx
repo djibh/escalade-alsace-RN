@@ -1,8 +1,8 @@
-import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import { StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import React, { memo } from "react";
 import { COLORS } from "../../constants/theme";
 
-export default function Post({ post, onPress }) {
+const Post = memo(({ post, onPress }) => {
   const { title, picture } = post;
 
   return (
@@ -11,7 +11,9 @@ export default function Post({ post, onPress }) {
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
-}
+});
+
+export default Post;
 
 const styles = StyleSheet.create({
   post: {
