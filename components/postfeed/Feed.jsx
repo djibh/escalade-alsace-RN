@@ -14,28 +14,30 @@ export default function Feed({ navigation }) {
   const { data } = usePosts();
 
   return (
-    <FlatList
-      style={styles.latestPosts}
-      ref={(ref) => {
-        this.flatListRef = ref;
-      }}
-      data={data}
-      initialNumToRender={5}
-      renderItem={({ item }) => (
-        <Post
-          post={item}
-          onPress={() =>
-            navigation.navigate("Post", {
-              itemId: item.id,
-              title: item.title,
-              imageUrl: item.imageUrl,
-              content: item.content,
-            })
-          }
-        />
-      )}
-      keyExtractor={(item) => item.id}
-    />
+    <View>
+      <FlatList
+        style={styles.latestPosts}
+        ref={(ref) => {
+          this.flatListRef = ref;
+        }}
+        data={data}
+        initialNumToRender={5}
+        renderItem={({ item }) => (
+          <Post
+            post={item}
+            onPress={() =>
+              navigation.navigate("Post", {
+                itemId: item.id,
+                title: item.title,
+                imageUrl: item.imageUrl,
+                content: item.content,
+              })
+            }
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
+    </View>
   );
 }
 
