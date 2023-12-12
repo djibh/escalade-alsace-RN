@@ -9,8 +9,12 @@ import Header from "../components/header/Header";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 import Feed from "../components/postfeed/Feed";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import PostScreen from "./PostScreen";
 
-export default function HomeScreen({ navigation }) {
+const Stack = createNativeStackNavigator();
+
+export default function FeedScreen({ navigation }) {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Header />

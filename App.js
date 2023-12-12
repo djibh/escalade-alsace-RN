@@ -1,28 +1,34 @@
-import { StyleSheet, Image } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { COLORS } from './constants/theme';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import PostScreen from './screens/PostScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'react-native';
+import TestScreen from './screens/TestScreen';
+import HomeNavigation from './screens/HomeNavigation';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   StatusBar.setHidden(true)
   return (<>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" >
-        <Stack.Screen name="Home" component={HomeScreen} options={{
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeNavigation} options={{
           header: () => null,
-          
+          tabBarIcon: ({ focused, tintColor }) => {
+            return <Ionicons name={`ios-home${focused ? '' : '-outline'}`} size={25} color={tintColor} />;
+          },
         }}/>
-        <Stack.Screen name="Post" component={PostScreen} options={{
+      <Tab.Screen name="Crags" component={TestScreen} options={{
           headerTintColor: "#e5e5e5",
           headerTransparent: true,
-          headerTitle: ""
+          headerTitle: "",
+          tabBarIcon: ({ focused, tintColor }) => {
+            return <Ionicons name={`ios-analytics${focused ? '' : '-outline'}`} size={25} color={tintColor} />;
+          },
         }}/>
-      </Stack.Navigator>
+    </Tab.Navigator>
     </NavigationContainer>
   </>
   );
