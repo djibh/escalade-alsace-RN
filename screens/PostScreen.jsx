@@ -10,13 +10,14 @@ function getRandomIntInclusive(min, max) {
 }
 
 export default function PostScreen({ route }) {
-  const { title, content, picture, tags, reactions } = route.params;
+  const { title, content, imageUrl } = route.params;
+  const fakeTags = ["Bouldering", "Best perf", "Kronthal"];
 
   return (
     <>
       <View style={styles.container}>
         <Image
-          source={{ uri: picture }}
+          source={{ uri: imageUrl }}
           style={styles.bgPicture}
           blurRadius={30}
         />
@@ -24,7 +25,7 @@ export default function PostScreen({ route }) {
           {/* <Search /> */}
           <View style={styles.contentWrapper}>
             <Text style={styles.title}>{title}</Text>
-            <Image source={{ uri: picture }} style={styles.picture} />
+            <Image source={{ uri: imageUrl }} style={styles.picture} />
             <View style={styles.comments}>
               <Image source={comments} />
               <Text style={styles.commentNumber}>
@@ -33,7 +34,7 @@ export default function PostScreen({ route }) {
             </View>
             <Text style={styles.content}>{content}</Text>
             <View style={styles.tags}>
-              {tags.map((item) => (
+              {fakeTags.map((item) => (
                 <Badge key={item} label={item} />
               ))}
             </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Header from "../components/header/Header";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";

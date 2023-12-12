@@ -1,15 +1,26 @@
-import { StyleSheet, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+} from "react-native";
 
-import React from "react";
-import { COLORS } from "../../constants/theme";
 import Post from "./Post";
-import { posts } from "../../dummy/data";
+import { usePosts } from "../services/api";
 
 export default function Feed({ navigation }) {
+  const { data } = usePosts();
+
   return (
     <FlatList
       style={styles.latestPosts}
-      data={posts}
+      ref={(ref) => {
+        this.flatListRef = ref;
+      }}
+      data={data}
+      initialNumToRender={5}
       renderItem={({ item }) => (
         <Post
           post={item}
@@ -17,10 +28,8 @@ export default function Feed({ navigation }) {
             navigation.navigate("Post", {
               itemId: item.id,
               title: item.title,
-              picture: item.picture,
-              content: item.body,
-              tags: item.tags,
-              comments: item.reactions,
+              imageUrl: item.imageUrl,
+              content: item.content,
             })
           }
         />

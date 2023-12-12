@@ -3,11 +3,11 @@ import React, { memo } from "react";
 import { COLORS } from "../../constants/theme";
 
 const Post = memo(({ post, onPress }) => {
-  const { title, picture } = post;
+  const { title, imageUrl } = post;
 
   return (
     <TouchableOpacity style={styles.post} onPress={onPress}>
-      <Image source={{ uri: picture }} style={styles.picture} />
+      <Image source={{ uri: imageUrl }} style={styles.picture} />
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
