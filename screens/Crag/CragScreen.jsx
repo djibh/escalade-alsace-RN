@@ -1,7 +1,9 @@
 import { StyleSheet, Text, Image, View, ScrollView } from "react-native";
-import { COLORS } from "../constants/theme";
-import Badge from "../components/Badge";
-import comments from "../assets/comments.png";
+import { COLORS } from "../../constants/theme";
+import Badge from "../../components/Badge";
+import comments from "../../assets/comments.png";
+import { capitalize } from "../../utils/capitalize";
+import Banner from "./Banner";
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -16,25 +18,18 @@ export default function CragScreen({ route }) {
   return (
     <>
       <View style={styles.container}>
-        {/* <Image
-          source={{ uri: imageUrl }}
-          style={styles.bgPicture}
-          blurRadius={30}
-        /> */}
+        <Banner label={label} region={region} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* <Search /> */}
           <View style={styles.contentWrapper}>
-            <Text style={styles.title}>{label}</Text>
-            <Text style={styles.title}>{region}</Text>
-            {/* <Image source={{ uri: imageUrl }} style={styles.picture} /> */}
+            <Text style={styles.content}>{routesCount} voies</Text>
+            <Text style={styles.content}>Type : {capitalize(type)}</Text>
             <View style={styles.comments}>
               <Image source={comments} />
               <Text style={styles.commentNumber}>
                 {getRandomIntInclusive(10, 1000)}
               </Text>
             </View>
-            <Text style={styles.content}>{type}</Text>
-            <Text style={styles.content}>{routesCount} voies et blocs</Text>
+
             <View style={styles.tags}>
               {fakeTags.map((item) => (
                 <Badge key={item} label={item} />
@@ -51,33 +46,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.primary,
-    justifyContent: "flex-start",
-    padding: 16,
     gap: 16,
-  },
-  bgPicture: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    opacity: 0.4,
   },
   contentWrapper: {
     flexDirection: "column",
     height: "100%",
+    paddingHorizontal: 16,
     gap: 24,
   },
-  picture: {
-    width: "100%",
-    aspectRatio: 4 / 3,
+  banner: {
+    height: 200,
+    backgroundColor: COLORS.primary,
+  },
+  bannerPicture: {
+    position: "absolute",
+    height: "100%",
     objectFit: "cover",
-    borderRadius: 5,
+    opacity: 0.7,
+    top: 0,
+    left: 0,
+    right: 0,
   },
   title: {
     marginTop: 100,
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: "bold",
+    color: COLORS.fontPrimary,
+    textShadowColor: "#333",
+    textShadowOffset: { height: 1, width: 0 },
+    textShadowRadius: 2,
+    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: "semibold",
     color: COLORS.fontPrimary,
     textShadowColor: "#333",
     textShadowOffset: { height: 1, width: 0 },
@@ -104,6 +106,6 @@ const styles = StyleSheet.create({
   },
   tags: {
     flexDirection: "row",
-    gap: 8,
+    gap: 12,
   },
 });

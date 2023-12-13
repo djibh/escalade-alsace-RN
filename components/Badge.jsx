@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
   label: {
     color: "white",
     textAlign: "center",
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     fontWeight: "600",
+    fontSize: 12,
   },
 });

@@ -2,10 +2,10 @@ import { FlatList, ScrollView, StyleSheet } from "react-native";
 import Header from "../components/header/Header";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
-import { useCrags } from "../components/services/useCrags";
+import { useCrags } from "../services/useCrags";
 import Crag from "../components/postfeed/Crag";
 
-export default function CragsScreen({ navigation }) {
+export default function CragsListScreen({ navigation }) {
   const { data } = useCrags();
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

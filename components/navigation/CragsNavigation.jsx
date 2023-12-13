@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import CragScreen from "../../screens/CragScreen";
-import CragsScreen from "../../screens/CragsScreen";
+import CragScreen from "../../screens/Crag/CragScreen";
+import CragsListScreen from "../../screens/CragsListScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -9,7 +9,7 @@ export default function CragsNavigation() {
     <Stack.Navigator initialRouteName="Crags">
       <Stack.Screen
         name="Crags"
-        component={CragsScreen}
+        component={CragsListScreen}
         options={{
           header: () => null,
         }}
