@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primary,
     justifyContent: "flex-start",
-    padding: 16,
+    paddingHorizontal: 16,
     gap: 16,
   },
   bgPicture: {

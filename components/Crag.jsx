@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { memo } from "react";
-import { COLORS } from "../../constants/theme";
+import { COLORS } from "../constants/theme";
 
 const Crag = memo(({ crag, onPress }) => {
   const { label, region, routesCount, type } = crag;

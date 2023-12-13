@@ -33,7 +33,7 @@ export default function LevelChart({ data }) {
           }}
         />
         <VictoryAxis
-          tickValues={1}
+          tickValues={[1]}
           style={{
             axis: { stroke: "transparent" },
             ticks: { stroke: "transparent" },

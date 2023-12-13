@@ -12,22 +12,19 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const data = [
-  { level: 5, quantity: 5 },
-  { level: 6, quantity: 10 },
-  { level: 7, quantity: 30 },
-  { level: 8, quantity: 12 },
-  { level: 9, quantity: 2 },
-];
-
 export default function CragScreen({ route }) {
-  const { label, region, routesCount, type } = route.params;
+  const { label, region, routesCount, type, gradesResume } = route.params;
   const fakeTags = ["Bouldering", "Best perf", "Kronthal"];
+
+  const data = gradesResume.labels.map((label, index) => ({
+    level: label,
+    quantity: gradesResume.data[index],
+  }));
 
   return (
     <>
       <View style={styles.container}>
-        <Banner label={label} region={region} />
+        {data && <Banner label={label} region={region} />}
         <LevelChart data={data} />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.contentWrapper}>

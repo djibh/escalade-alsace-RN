@@ -7,7 +7,6 @@ type Crag = {
 };
 
 export const useCrags = () => {
-    const [setLoading] = useState(true);
     const [data, setData] = useState<Crag[]>([]);
     
     const getCrags = async () => {

@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 import { useCrags } from "../services/useCrags";
-import Crag from "../components/postfeed/Crag";
+import Crag from "../components/Crag";
 
 export default function CragsListScreen({ navigation }) {
   const { data } = useCrags();
@@ -27,6 +27,7 @@ export default function CragsListScreen({ navigation }) {
                 region: item.region,
                 routesCount: item.routesCount,
                 type: item.type,
+                gradesResume: item.gradesResume,
               })
             }
           />
