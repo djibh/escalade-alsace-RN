@@ -4,6 +4,7 @@ import Badge from "../../components/Badge";
 import comments from "../../assets/comments.png";
 import { capitalize } from "../../utils/capitalize";
 import Banner from "./Banner";
+import BarChart from "./LevelChart";
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -19,6 +20,7 @@ export default function CragScreen({ route }) {
     <>
       <View style={styles.container}>
         <Banner label={label} region={region} />
+        <LevelChart />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.contentWrapper}>
             <Text style={styles.content}>{routesCount} voies</Text>
