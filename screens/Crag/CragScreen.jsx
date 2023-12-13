@@ -4,13 +4,21 @@ import Badge from "../../components/Badge";
 import comments from "../../assets/comments.png";
 import { capitalize } from "../../utils/capitalize";
 import Banner from "./Banner";
-import BarChart from "./LevelChart";
+import LevelChart from "./LevelChart";
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+const data = [
+  { level: 5, quantity: 5 },
+  { level: 6, quantity: 10 },
+  { level: 7, quantity: 30 },
+  { level: 8, quantity: 12 },
+  { level: 9, quantity: 2 },
+];
 
 export default function CragScreen({ route }) {
   const { label, region, routesCount, type } = route.params;
@@ -20,7 +28,7 @@ export default function CragScreen({ route }) {
     <>
       <View style={styles.container}>
         <Banner label={label} region={region} />
-        <LevelChart />
+        <LevelChart data={data} />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.contentWrapper}>
             <Text style={styles.content}>{routesCount} voies</Text>
