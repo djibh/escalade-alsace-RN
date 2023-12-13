@@ -1,11 +1,11 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { COLORS } from './constants/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'react-native';
-import TestScreen from './screens/TestScreen';
-import HomeNavigation from './screens/HomeNavigation';
+import HomeNavigation from './components/navigation/HomeNavigation';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import CragsNavigation from './components/navigation/CragsNavigation';
 
 const Tab = createBottomTabNavigator()
 
@@ -13,19 +13,17 @@ export default function App() {
   StatusBar.setHidden(true)
   return (<>
     <NavigationContainer>
-    <Tab.Navigator>
+    <Tab.Navigator >
       <Tab.Screen name="Home" component={HomeNavigation} options={{
           header: () => null,
           tabBarIcon: ({ focused, tintColor }) => {
             return <Ionicons name={`ios-home${focused ? '' : '-outline'}`} size={25} color={tintColor} />;
           },
         }}/>
-      <Tab.Screen name="Crags" component={TestScreen} options={{
-          headerTintColor: "#e5e5e5",
-          headerTransparent: true,
-          headerTitle: "",
+      <Tab.Screen name="CragsStack" component={CragsNavigation} options={{
+          header: () => null,
           tabBarIcon: ({ focused, tintColor }) => {
-            return <Ionicons name={`ios-analytics${focused ? '' : '-outline'}`} size={25} color={tintColor} />;
+            return <Ionicons name={`ios-analytics${focused ? '-sharp' : ''}`} size={25} color={tintColor} />;
           },
         }}/>
     </Tab.Navigator>

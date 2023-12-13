@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import PostScreen from "./PostScreen";
-import FeedScreen from "./FeedScreen";
+import PostScreen from "../../screens/PostScreen";
+import FeedScreen from "../../screens/FeedScreen";
 
 const Stack = createNativeStackNavigator();
 
-export default function HomeNavigation({ navigation }) {
+export default function HomeNavigation() {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
-        name="Home"
+        name="Feed"
         component={FeedScreen}
         options={{
           header: () => null,

@@ -1,18 +1,8 @@
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  View,
-  SafeAreaView,
-} from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import Header from "../components/header/Header";
 import Search from "../components/search/Search";
 import { COLORS } from "../constants/theme";
 import Feed from "../components/postfeed/Feed";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import PostScreen from "./PostScreen";
-
-const Stack = createNativeStackNavigator();
 
 export default function FeedScreen({ navigation }) {
   return (

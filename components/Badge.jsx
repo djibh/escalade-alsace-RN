@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import { COLORS } from "../constants/theme";
 import { capitalize } from "../utils/capitalize";
 
 export default function Badge({ label }) {

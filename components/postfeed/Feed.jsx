@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import Post from "./Post";
-import { usePosts } from "../services/api";
+import { usePosts } from "../services/usePosts";
 
 export default function Feed({ navigation }) {
   const { data } = usePosts();

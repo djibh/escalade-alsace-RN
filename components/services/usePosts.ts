@@ -9,7 +9,7 @@ type Post = {
 };
 
 export const usePosts = () => {
-    const [isLoading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [data, setData] = useState<Post[]>([]);
     
     const getPosts = async () => {
@@ -19,9 +19,7 @@ export const usePosts = () => {
             setData(json);
         } catch (error) {
             console.error(error);
-        } finally {
-            setLoading(false);
-        }        
+        }      
     };
 
     useEffect(() => {
