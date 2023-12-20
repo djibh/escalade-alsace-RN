@@ -28,6 +28,9 @@ export default function CragsListScreen({ navigation }) {
                 routesCount: item.routesCount,
                 type: item.type,
                 gradesResume: item.gradesResume,
+                expositions: item.expositions,
+                rocks: item.rocks,
+                height: item.height,
               })
             }
           />

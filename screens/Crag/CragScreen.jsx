@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { COLORS } from "../../constants/theme";
 import Banner from "./Banner";
 import LevelChart from "./LevelChart";
@@ -6,7 +6,16 @@ import ActionsBar from "./ActionsBar";
 import HScrollView from "./HScrollView";
 
 export default function CragScreen({ route }) {
-  const { label, region, routesCount, type, gradesResume } = route.params;
+  const {
+    label,
+    region,
+    routesCount,
+    type,
+    gradesResume,
+    expositions,
+    rocks,
+    height,
+  } = route.params;
   const data = gradesResume.labels
     .map((label, index) => ({
       level: label,
@@ -23,24 +32,15 @@ export default function CragScreen({ route }) {
             region={region}
             routesCount={routesCount}
             type={type}
+            height={height}
           />
         )}
         <ScrollView showsVerticalScrollIndicator={false}>
           <LevelChart data={data} />
           <View style={styles.contentWrapper}>
             <View>
-              <HScrollView
-                title={"EXPOSITION"}
-                elements={["sud", "sud-est", "ouest"]}
-              />
-              <HScrollView
-                title={"HAUTEUR"}
-                elements={["grès", "granit", "conglomérat"]}
-              />
-              <HScrollView
-                title={"ROCHE"}
-                elements={["grès", "granit", "conglomérat"]}
-              />
+              <HScrollView title={"EXPOSITION"} elements={expositions} />
+              <HScrollView title={"ROCHE"} elements={rocks} />
             </View>
             <ActionsBar />
           </View>

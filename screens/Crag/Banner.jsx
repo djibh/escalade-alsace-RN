@@ -3,23 +3,47 @@ import { COLORS } from "../../constants/theme";
 import { capitalize } from "../../utils/capitalize";
 import { BlurView } from "expo-blur";
 
-export default function Banner({ imageUrl, label, region, routesCount, type }) {
+export default function Banner({
+  imageUrl,
+  label,
+  region,
+  routesCount,
+  height,
+  type,
+}) {
+  const mockImages = [
+    "https://upload.wikimedia.org/wikipedia/commons/7/76/Vue_aérienne_du_Kronthal.JPG",
+    "https://planetgrimpe.com/wp-content/uploads/2016/04/13000608_1083884445009234_437871316_o-600x200.jpg",
+    "https://planetgrimpe.com/wp-content/uploads/2016/04/12986880_1756288461266552_363553203_o-1-600x338.jpg",
+    "https://media.camptocamp.org/c2corg-active/1347603629_703932831MI.jpg",
+  ];
+
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  const photoIndex = getRandomIntInclusive(0, mockImages.length - 1);
+
   return (
     <View>
       <View style={styles.banner}>
         <Image
           source={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/7/76/Vue_aérienne_du_Kronthal.JPG",
+            uri: mockImages[photoIndex],
           }}
           style={styles.bannerPicture}
         />
-        <Text style={styles.title}>{label}</Text>
-        <Text style={styles.subtitle}>{region}</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{label}</Text>
+          <Text style={styles.subtitle}>{region}</Text>
+        </View>
       </View>
-      <BlurView intensity={60} style={styles.meta}>
+      <BlurView intensity={35} style={styles.meta}>
         <Text style={styles.metaContent}>Type: {capitalize(type)}</Text>
         <Text style={styles.metaContent}>{routesCount} voies</Text>
-        <Text style={styles.metaContent}>{routesCount} blocs</Text>
+        {height && <Text style={styles.metaContent}>{height}m</Text>}
       </BlurView>
     </View>
   );
@@ -27,7 +51,7 @@ export default function Banner({ imageUrl, label, region, routesCount, type }) {
 
 const styles = StyleSheet.create({
   banner: {
-    height: 210,
+    // height: 250,
     backgroundColor: COLORS.primary,
   },
   bannerPicture: {
@@ -39,8 +63,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  titleContainer: {
+    paddingVertical: 100,
+  },
   title: {
-    marginTop: 80,
+    // marginTop: 90,
     fontSize: 32,
     fontWeight: "bold",
     color: COLORS.fontPrimary,
@@ -70,8 +97,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#44444477",
   },
   metaContent: {
-    fontWeight: "500",
+    flex: 1,
+    textAlign: "center",
+    fontWeight: "600",
     color: COLORS.fontPrimary,
     lineHeight: 20,
+    // fontSize: 16,
   },
 });
