@@ -1,47 +1,48 @@
-import { StyleSheet, Text, Image, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { COLORS } from "../../constants/theme";
-import Badge from "../../components/Badge";
-import comments from "../../assets/comments.png";
-import { capitalize } from "../../utils/capitalize";
 import Banner from "./Banner";
 import LevelChart from "./LevelChart";
-
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import ActionsBar from "./ActionsBar";
+import HScrollView from "./HScrollView";
 
 export default function CragScreen({ route }) {
   const { label, region, routesCount, type, gradesResume } = route.params;
-  const fakeTags = ["Bouldering", "Best perf", "Kronthal"];
-
-  const data = gradesResume.labels.map((label, index) => ({
-    level: label,
-    quantity: gradesResume.data[index],
-  }));
+  const data = gradesResume.labels
+    .map((label, index) => ({
+      level: label,
+      quantity: gradesResume.data[index],
+    }))
+    .sort((a, b) => a.level - b.level);
 
   return (
     <>
       <View style={styles.container}>
-        {data && <Banner label={label} region={region} />}
-        <LevelChart data={data} />
+        {data && (
+          <Banner
+            label={label}
+            region={region}
+            routesCount={routesCount}
+            type={type}
+          />
+        )}
         <ScrollView showsVerticalScrollIndicator={false}>
+          <LevelChart data={data} />
           <View style={styles.contentWrapper}>
-            <Text style={styles.content}>{routesCount} voies</Text>
-            <Text style={styles.content}>Type : {capitalize(type)}</Text>
-            <View style={styles.comments}>
-              <Image source={comments} />
-              <Text style={styles.commentNumber}>
-                {getRandomIntInclusive(10, 1000)}
-              </Text>
+            <View>
+              <HScrollView
+                title={"EXPOSITION"}
+                elements={["sud", "sud-est", "ouest"]}
+              />
+              <HScrollView
+                title={"HAUTEUR"}
+                elements={["grès", "granit", "conglomérat"]}
+              />
+              <HScrollView
+                title={"ROCHE"}
+                elements={["grès", "granit", "conglomérat"]}
+              />
             </View>
-
-            <View style={styles.tags}>
-              {fakeTags.map((item) => (
-                <Badge key={item} label={item} />
-              ))}
-            </View>
+            <ActionsBar />
           </View>
         </ScrollView>
       </View>
@@ -52,14 +53,14 @@ export default function CragScreen({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.primary,
-    gap: 16,
+    backgroundColor: "#ede",
   },
   contentWrapper: {
     flexDirection: "column",
+    justifyContent: "space-between",
     height: "100%",
-    paddingHorizontal: 16,
-    gap: 24,
+    padding: 16,
+    gap: 16,
   },
   banner: {
     height: 200,

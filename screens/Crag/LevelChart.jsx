@@ -1,22 +1,23 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme,
-} from "victory-native";
+import { VictoryAxis, VictoryBar, VictoryChart } from "victory-native";
+import { COLORS } from "../../constants/theme";
 
 export default function LevelChart({ data }) {
   return (
     <View style={styles.container}>
-      <VictoryChart height={220} theme={VictoryTheme.material}>
+      <VictoryChart height={220}>
         <VictoryBar
           data={data}
           x="level"
           y="quantity"
           barWidth={24}
-          cornerRadius={12}
+          cornerRadius={{
+            bottomLeft: 12,
+            bottomRight: 12,
+            topLeft: 12,
+            topRight: 12,
+          }}
           style={{
             data: {
               fill: ({ datum }) =>
@@ -51,5 +52,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fafafa",
+    shadowColor: "#ccc",
+    shadowOffset: 3,
+    shadowRadius: 8,
+    shadowOpacity: 0.6,
   },
 });

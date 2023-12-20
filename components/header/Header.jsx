@@ -9,9 +9,7 @@ export default function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const onPressed = () => {
     setIsOpenMenu(!isOpenMenu);
-    console.log("====================================");
-    console.log(isOpenMenu);
-    console.log("====================================");
+    console.log("**PRESSED** Header menu");
   };
 
   return (
